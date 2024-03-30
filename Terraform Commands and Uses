@@ -1,0 +1,11 @@
+It only checks for the syntax (whether the code is valid or not) and dont check the format.
+$terraform validate
+It formate the code or allign the code properly.
+$terraform fmt
+It will show you which things are going to create
+$terraform plan
+It will get save your output of terraform plan in sample.txt file
+$tarraform plan -out sample.txt
+(+) is for addition
+(-) is for delete
+(~) is for changes
