@@ -1,0 +1,28 @@
+Backend S3 - Configuration for State Locking
+Create the Dynamodb table from the console
+Mentioned the Partition Key as "LockID"
+Created Dynamodb table - "Terraform-Demo-Table"
+Created folder - "vpc-demo"
+Created the provider.tf file separetly
+provider "aws" {
+  region = "ap-south-1"
+}
+Then created the VPC
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "Terraform-VPC"
+  }
+}
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "Terraform-Demo-Table"
+  }
+}
+Also added S3 bucket details name, region and dynamodb table name.
+
