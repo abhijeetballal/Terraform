@@ -1,4 +1,7 @@
 Backend S3 - Configuration for State Locking
+
+Create EC2 instance - Terraform-Server
+Provided the EC2 full access via IAM role
 Create the Dynamodb table from the console
 Mentioned the Partition Key as "LockID"
 Created Dynamodb table - "Terraform-Demo-Table"
