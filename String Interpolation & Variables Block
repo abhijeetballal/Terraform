@@ -1,0 +1,32 @@
+Create a new file variables.tf
+variable "cidr_range" {
+  type = string
+  description = "choose any ip range"
+  default = "172.10.0.0/20"
+}
+
+Then add this file to cidr range of main.tf file
+resource "aws_vpc" "main" {
+  cidr_block       = "${var.cidr_range}"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "terraform-vpc"
+    Environment = "Dev"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "tf-demo-table"
+  }
+}
+
+output "aws_vpc_output" {
+  value = "${aws_vpc.main.cidr_block}"
+}
+Run the command $terraform plan
+In next step, remove the ip address from default section.
