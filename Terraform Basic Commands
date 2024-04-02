@@ -1,3 +1,5 @@
+TERRAFORM BASIC COMMANDS
+
 It only checks for the syntax (whether the code is valid or not) and dont check the format.
 $terraform validate
 It formate the code or allign the code properly.
