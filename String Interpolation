@@ -1,3 +1,5 @@
+STRING INTERPOLATION & VARIABLES
+
 Create a new file variables.tf
 variable "cidr_range" {
   type = string
