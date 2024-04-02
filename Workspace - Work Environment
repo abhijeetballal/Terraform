@@ -1,1 +1,12 @@
-
+It will show you the workspace list
+$terraform workspace list
+It will create the new workspace
+$terraform workspace new dev
+It will create the new workspace
+$terraform workspace new prod
+If you want to switch the workspace
+$terraform workspace select dev
+If you want to switch the workspace
+$terraform workspace select prod
+Then we applied below command to check wether state file is getting created in respective workspce
+$terraform apply -var-file=dev.tfvars --auto-approve
