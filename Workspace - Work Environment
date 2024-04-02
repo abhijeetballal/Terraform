@@ -10,3 +10,28 @@ If you want to switch the workspace
 $terraform workspace select prod
 Then we applied below command to check wether state file is getting created in respective workspce
 $terraform apply -var-file=dev.tfvars --auto-approve
+Here code itself tell you which workspace they are applying the changes. make the changes in tags from main.tf file.
+resource "aws_vpc" "main" {
+  cidr_block       = "${var.cidr_range}"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "terraform-vpc"
+    Environment = "${terraform.workspace}"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "tf-demo-table"
+  }
+}
+
+output "aws_vpc_output" {
+  value = "${aws_vpc.main.cidr_block}"
+}
+If you want to destroy the created vpc, just use below command
+$terraform destroy --auto-approve
