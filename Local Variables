@@ -1,0 +1,27 @@
+LOCAL VARIABLE
+
+In local variable you can 2 conditions.
+One is for "cidr range" and second is for "name". Just add the locals block to main.tf file, mentioned as below:
+locals {
+  vpc_name = "${terraform.workspace == "dev" ? "demo-vpc-dev" : "demo-vpc-prod"}"
+}
+
+resource "aws_vpc" "main" {
+  count            = "${terraform.workspace == "dev" ? 0 : 1}"
+  cidr_block       = "${var.cidr_range}"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "${local.vpc_name}"
+    Environment = "${terraform.workspace}"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "tf-demo-table"
+  }
+}
