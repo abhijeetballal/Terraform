@@ -1,4 +1,4 @@
-LOOP - COUNT VARIABLE OR CONDITIONAL LOOP
+LOOP - COUNT VARIABLE OR CONDITIONAL LOOP/EXECUTION
 
 We can add as much as count we want of VPC or EC2 etc. Only by adding the count in code after the resource line
 resource "aws_vpc" "main" {
