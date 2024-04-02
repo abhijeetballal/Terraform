@@ -1,0 +1,43 @@
+LOOP - COUNT VARIABLE OR CONDITIONAL LOOP
+
+We can add as much as count we want of VPC or EC2 etc. Only by adding the count in code after the resource line
+resource "aws_vpc" "main" {
+  count            = 5
+  cidr_block       = "${var.cidr_range}"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "terraform-vpc"
+    Environment = "${terraform.workspace}"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "tf-demo-table"
+  }
+}
+
+Or we can apply the condition also in count section mention as below
+resource "aws_vpc" "main" {
+  count            = "${terraform.workspace == "dev" ? 0 : 1}"
+  cidr_block       = "${var.cidr_range}"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "terraform-vpc"
+    Environment = "${terraform.workspace}"
+  }
+}
+
+terraform {
+  backend "s3" {
+    bucket = "my-tf-test-bucket-0409"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+    dynamodb_table = "tf-demo-table"
+  }
+}
