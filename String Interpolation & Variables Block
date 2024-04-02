@@ -31,3 +31,5 @@ output "aws_vpc_output" {
 Run the command $terraform plan
 In next step, remove the ip address from default section.
 Then it will ask you to enter the ip address with your own value.
+Also you can do with below method
+$terraform plan -var "vpc_cidr=10.10.0.0/24"
