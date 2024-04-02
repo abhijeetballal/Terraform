@@ -1,4 +1,4 @@
-WORKSPACE (ENVIRONMENT)
+WORKSPACE (ENVIRONMENT - Dev/Prod/Test)
 
 It will show you the workspace list
 $terraform workspace list
