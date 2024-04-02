@@ -1,3 +1,5 @@
+WORKSPACE (ENVIRONMENT)
+
 It will show you the workspace list
 $terraform workspace list
 It will create the new workspace
