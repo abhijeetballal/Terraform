@@ -33,3 +33,7 @@ In next step, remove the ip address from default section.
 Then it will ask you to enter the ip address with your own value.
 Also you can do with below method
 $terraform plan -var "vpc_cidr=10.10.0.0/24"
+Now another method is create the file $dev.tfvars
+cidr_range = "10.10.0.0/24"
+and then run below command
+$terraform plan -var-file=dev.tfvars
