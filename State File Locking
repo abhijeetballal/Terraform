@@ -1,5 +1,5 @@
 Terraform Backend
-Configuration State Locking with S3 Bucket
+Configuration State file Locking with S3 Bucket
 
 Create EC2 instance - Terraform-Server
 Provided the EC2 full access via IAM role
