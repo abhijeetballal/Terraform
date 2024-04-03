@@ -1,1 +1,19 @@
-
+Go to the console, use below command
+$terraform console
+#Path - developer.hashicorp.com/terraform/language/functions
+Below are few functions to try:
+> max(5, 12, 9)
+"12"
+> abs(-12.4)
+"12.4"
+> lower ("HELLO")
+"hello"
+> upper ("hello")
+"HELLO"
+> split(",", "foo,bar,baz")
+> trim("?!hello?!", "!?")
+"hello"
+> lookup({a="ay", b="bee"}, "a", "what?")
+"ay"
+> lookup({a="ay", b="bee"}, "c", "what?")
+"what?"
