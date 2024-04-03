@@ -21,3 +21,8 @@ resource "aws_vpc" "manual_vpc" {
 
 And then apply below given command
 $terraform import aws_vpc.manual_vpc "vpc-id"
+After applying above command just give below both the commands
+$terraform init
+$terraform plan
+$terraform apply --auto-approve
+Your infrastructure will get created in terraform and you will get the tfstate file.
