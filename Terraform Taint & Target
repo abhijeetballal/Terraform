@@ -9,3 +9,4 @@ $terraform destroy -target aws_instance.instance-2 --auto-approve
 In terraform Taint, if you tainted the ec2 instance using below command and you did some changes in its code.
 $terraform taint aws_instance.instance-1
 It will destroy that ec2 instance and create it again from begining or from starting.
+Tainted resource is consider as a corrupt resource.
