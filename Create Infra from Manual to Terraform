@@ -1,1 +1,23 @@
+Create or Convert Manual Infrastructure to Terraform
 
+Initially create the main.tf file with maximum information you have
+for example:
+
+main.tf
+*********************************************
+provider "aws"{
+region = "ap-south-1"
+}
+
+resource "aws_vpc" "manual_vpc" {
+  cidr_block = "10.0.0.0/24"
+  instance_tenancy = "default"
+
+  tags = {
+  Name = "morning-demo-vpc"
+  Environment = "Prod"
+}
+}
+
+And then apply below given command
+$terraform import aws_vpc.manual_vpc "vpc-id"
