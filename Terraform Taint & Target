@@ -1,0 +1,11 @@
+Terraform Taint and Target
+
+In terraform Target, if you have 2 or 3 instances running and you have to delete only 1 out of 3. for ex.
+aws_instance.instance-1
+aws_instance.instance-2
+And you have to delete only 2 instance then use below comment to delete on 2 instance:
+$terraform destroy -target aws_instance.instance-2 --auto-approve
+
+In terraform Taint, if you tainted the ec2 instance using below command and you did some changes in its code.
+$terraform taint aws_instance.instance-1
+It will destroy that ec2 instance and create it again from begining or from starting.
